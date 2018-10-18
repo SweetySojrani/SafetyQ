@@ -14,7 +14,7 @@ Team Name: Project Team-8
 
 PROJECT IDEAS  
 Project idea 1:  
-Title: **DISASTER RELIEF**  
+Title: **DISASTER RELIEF MANAGEMENT**  
 Abstract: Disaster management and recovery have been a challenge for humans for a long time. With advanced and powerful machinery the situation has improved in the last few decades. There is a gap in communication during critical disaster period, between disaster management team and the victims. In such situations, time plays a crucial role and timely action and appropriate distribution of resources can reduce damage to life and property to a greater extent.
 Our vision is to improve the disaster recovery and management process in a better way with the aid of Machine Learning. The focus is on managing relief materials to reach the disaster critical zone in an optimum amount based on the concentration of the affected area. We assess the critical zone and evaluate the distribution of resources among the affected regions. The system is targeted towards the people involved in disaster management teams.
 Resources: IBM Open Source, Power AI Vision.
