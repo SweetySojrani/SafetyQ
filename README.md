@@ -8,7 +8,7 @@ Sweety Sojrani
 
 
 ## Project idea 1  
-### **Disaster Relief Management**  
+## **Disaster Relief Management**  
 ### Abstract
 Disaster management and recovery has been a challenge for humans for a long time. With advanced powerful machinery the situation has improved a lot in the last few decades. During disaster periods, the disaster management team face lot of difficulties in communicating the affected regions. In such crucial situations, timely action and appropriate distribution of resources can reduce damage to life and property to a greater extent.
 
@@ -18,7 +18,7 @@ Resources: IBM Open Source, Power AI Vision.
 
 
 ## Project Idea 2
-### **Doctor Run**  
+## **Doctor Run**  
 ### Abstract
 Providing medical assistance for the fitness application users is the need of the hour. With millions of people using fitness gadgets to track their running, many are not able to self-assess whether continuing running with their current medical condition, or the distance they have covered for their age and weight is appropriate or not. What if we could prompt runners to walk or run more/less based on their weight and age, and provide them the details of how much that person with that weight and age must run to be fit?
 
@@ -30,7 +30,7 @@ Resources: Google Fit – A google open source.
 
 
 ## Project Idea 3  
-### **Predict Neighborhood Safety Quotient**  
+## **Predict Neighborhood Safety Quotient**  
 ### Abstract
 People keep relocating to new places due to change of jobs, schools, or other reasons. Safety has been one of the crucial factor involved in deciding to live in a locality. In the recent past, there has been an upsurge in crimes in the bay area. It is often difficult for people to consider the safety of the location due to unavailability of tools to evaluate the trend of crimes and predict if the safety of the place would be favorable during their stay for x number of years in the area. Most of the tools available in the market show recent data, which would be dynamic based on the trends and hence cannot be utilized effectively to predict how the crime rates will look in the next x number of years. Thus, there is a need for an application which would predict the safety value of the locality based on the past history of crimes in and surrounding the location. The application will facilitate the renters and home buyers to make better decision to relocate to the area.
 
