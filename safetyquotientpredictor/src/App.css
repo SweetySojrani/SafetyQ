@@ -30,3 +30,28 @@
     transform: rotate(360deg);
   }
 }
+.chartPage {
+  margin-left: 10px;
+}
+.bar_chart {
+  float: left;
+  width: 400px;
+  height: 200px;
+  margin-left: 50px;
+  box-shadow: 5px 5px #888888;
+}
+.safetyScoreDisplay {
+  font-weight: bold;
+  font-size: 25px;
+}
+.ScoreDisplay {
+  font-weight: bold;
+  font-size: 25px;
+  color: blue;
+}
+.pieChart {
+  margin-top: 20px;
+}
+.barChart {
+  margin-bottom: 20px;
+}
