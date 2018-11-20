@@ -30,3 +30,83 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.home-page-container{
+  background-image: url('https://www.apartments.com/a/e134a5/modules/homepage/content/images/heroes/generic/1680.jpg');
+  background-repeat: no-repeat;
+}
+
+.content-container{
+  padding: 10%;
+}
+
+.home-page-text{
+ 
+  font: 60px 'Bradley Hand', cursive;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+}
+
+.search-box{
+  border-radius : 2px;
+}
+.header{
+  height: 65px;
+}
+.center-content{
+  text-align: center;
+}
+
+.pad-1-pc{
+  padding: 1% 0;
+}
+
+.header span{
+  font-weight: bolder;
+  font: 30px 'Comic Sans MS, Comic Sans, cursive';
+  color: black;
+}
+
+.header-img{
+  width:30px;
+  height: 30px;
+  padding-right: 5px;
+}
+
+.go-btn{
+  background-color: #77b800;
+  color: white;
+  font-weight: bolder;
+  font-size:26px;
+}
+
+.go-btn:hover{
+  background-color: white;
+  color: #77b800;
+
+}
+
+.addon-content{
+  color: #4c4c4c;
+  font-size:26px;
+  font-weight: bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.addon-sub-content{
+  color: #4c4c4c;
+  font-size:20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.thumbnails-container img{
+  width: 300px;
+}
+
+.footer{
+  background-color: #f4f4f4;
+  padding: 2% 0;
+}
