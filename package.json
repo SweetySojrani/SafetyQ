@@ -1,0 +1,19 @@
+{
+  "name": "project-team-8",
+  "version": "1.0.0",
+  "description": "### Team Members:   Akhil Krishnamoorthy   Arivoli Ayakaramblam Elamparithy   Richita Das   Sweety Sojrani",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SJSU272LabF18/Project-Team-8.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SJSU272LabF18/Project-Team-8/issues"
+  },
+  "homepage": "https://github.com/SJSU272LabF18/Project-Team-8#readme"
+}
