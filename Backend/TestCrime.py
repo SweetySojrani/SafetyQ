@@ -76,4 +76,135 @@ def fetchCrimeType():
 	
 	return dumps(jsonResult)
 
+@app.route("/getGenderData", methods=['GET'])
+
+def fetchGenderData():
+
+	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+
+	jsonResult={}
+
+	jsonResult['male'] = 0
+
+	jsonResult['female'] = 0
+    	
+	for item in result:
+
+		genderofVictim = (item["Victim Sex"])
+
+		if genderofVictim == 'M' :
+
+			jsonResult['male']=jsonResult['male']+1
+
+		elif genderofVictim == 'F':
+
+			jsonResult['female']=jsonResult['female']+1
+            
+		
+
+	#resultCount = [day, night]
+
+	return dumps(jsonResult)
+
+
+@app.route("/getAgeData", methods=['GET'])
+
+def fetchAgeData():
+
+
+
+	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+
+	jsonResult={}
+
+	jsonResult['child'] = 0
+
+	jsonResult['mid1'] = 0
+
+	jsonResult['mid2'] = 0
+
+	jsonResult['mid3'] = 0
+
+	jsonResult['old'] = 0
+
+	for item in result:
+
+		ageofVictim = (item["Victim Age"])
+
+		if ageofVictim >= '1' and ageofVictim <= '18':
+
+			jsonResult['child']=jsonResult['child']+1
+
+		elif ageofVictim >= '19' and ageofVictim <= '25':
+
+			jsonResult['mid1']=jsonResult['mid1']+1
+
+		elif ageofVictim >= '26' and ageofVictim <= '40':
+
+			jsonResult['mid2']=jsonResult['mid2']+1
+
+		elif ageofVictim >= '41' and ageofVictim <= '60':
+
+			jsonResult['mid3']=jsonResult['mid3']+1
+
+		else:
+
+			jsonResult['old']=jsonResult['old']+1
+
+	#resultCount = [day, night]
+
+	return dumps(jsonResult)
+
+
+@app.route("/getRaceData", methods=['GET'])
+
+def fetchRaceData():
+
+	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+
+	jsonResult={}
+
+	jsonResult['white'] = 0
+
+	jsonResult['other'] = 0
+    	
+	jsonResult['hispanic'] = 0
+
+	jsonResult['black'] = 0
+    
+	jsonResult['asian'] = 0
+
+	jsonResult['caucasian'] = 0
+    
+	for item in result:
+
+		raceofVictim = (item["Victim Descent"])
+
+		if raceofVictim == 'A' or raceofVictim == 'K' or raceofVictim == 'I':
+
+			jsonResult['asian']=jsonResult['asian']+1
+
+		elif raceofVictim == 'B' or raceofVictim == 'J':
+
+			jsonResult['black']=jsonResult['black']+1
+            
+		elif raceofVictim == 'H' or raceofVictim == 'L':
+
+			jsonResult['hispanic']=jsonResult['hispanic']+1
+
+		elif raceofVictim == 'W':
+
+			jsonResult['white']=jsonResult['white']+1
+        
+		elif raceofVictim == 'C' or raceofVictim == 'F' or raceofVictim == 'G' or raceofVictim == 'P':
+
+			jsonResult['caucasian']=jsonResult['caucasian']+1
+            
+		else:
+
+			jsonResult['other']=jsonResult['other']+1
+
+	#resultCount = [day, night]
+
+	return dumps(jsonResult)
 
