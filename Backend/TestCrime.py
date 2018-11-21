@@ -30,8 +30,11 @@ def fetch_crime():
 
 @app.route("/getDayNightData", methods=['GET'])
 def fetchDayNightData():
-	#print(request.args['City'])
-	result = collection.find({"City": "Los Angeles","Area Name" : "Central"})
+	city = request.args['City']
+    
+	area = request.args['Area Name']
+
+	result = collection.find({"City": city,"Area Name" : area})
 	jsonResult={}
 	jsonResult['day'] = 0
 	jsonResult['night'] = 0
@@ -58,8 +61,11 @@ def fetchCrimeType():
 	jsonResult['sexualcrimes'] = 0
 	jsonResult['others'] = 0
 
-	result = collection.find({"City": "Los Angeles","Area Name" : "Central"},{"Crime Type": 1, "_id": 0})
-	#return dumps(result)
+	city = request.args['City']
+    
+	area = request.args['Area Name']
+
+	result = collection.find({"City": city,"Area Name" : area})
 
 	for item in result:
 		if any(word in item['Crime Type'].lower() for word in list1):
@@ -80,8 +86,12 @@ def fetchCrimeType():
 
 def fetchGenderData():
 
-	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+	city = request.args['City']
+    
+	area = request.args['Area Name']
 
+	result = collection.find({"City": city,"Area Name" : area})
+    
 	jsonResult={}
 
 	jsonResult['male'] = 0
@@ -111,10 +121,12 @@ def fetchGenderData():
 
 def fetchAgeData():
 
+	city = request.args['City']
+    
+	area = request.args['Area Name']
 
-
-	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
-
+	result = collection.find({"City": city,"Area Name" : area})
+    
 	jsonResult={}
 
 	jsonResult['child'] = 0
@@ -160,8 +172,12 @@ def fetchAgeData():
 
 def fetchRaceData():
 
-	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+	city = request.args['City']
+    
+	area = request.args['Area Name']
 
+	result = collection.find({"City": city,"Area Name" : area})
+    
 	jsonResult={}
 
 	jsonResult['white'] = 0
@@ -214,8 +230,12 @@ def fetchDateData():
 
 
 
-	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+	city = request.args['City']
+    
+	area = request.args['Area Name']
 
+	result = collection.find({"City": city,"Area Name" : area})
+    
 	jsonResult={}
 
 	jsonResult['2013'] = 0
