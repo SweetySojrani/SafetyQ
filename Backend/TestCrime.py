@@ -11,7 +11,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-connection = MongoClient("mongodb://dbuser:dbuser1@ds039707.mlab.com:39707/safety_predict")
+connection = MongoClient("mongodb://XXX")
 db = connection['safety_predict']
 collection = db.crime
 
