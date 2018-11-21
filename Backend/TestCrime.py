@@ -7,11 +7,21 @@ from pymongo import MongoClient
 from bson import Binary, Code
 from bson.json_util import dumps
 import json
+from flask_cors import CORS
+app = Flask(__name__)
+CORS(app)
 
 connection = MongoClient("mongodb://dbuser:dbuser1@ds039707.mlab.com:39707/safety_predict")
 db = connection['safety_predict']
 collection = db.crime
 
+@app.after_request 
+def after_request(response): 
+	response.headers.add('Access-Control-Allow-Credentials', 'true') 
+	response.headers.add('Access-Control-Allow-Origin', '*') 
+	response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization') 
+	response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS') 
+	return response
 
 @app.route("/", methods=['GET'])
 def fetch_crime():
@@ -19,6 +29,7 @@ def fetch_crime():
 
 @app.route("/getCrimeData", methods=['GET'])
 def fetchDayNightData():
+
 	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
 	jsonResult={}
 	jsonResult['day'] = 0
