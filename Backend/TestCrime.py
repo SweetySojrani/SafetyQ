@@ -29,8 +29,8 @@ def fetch_crime():
 
 @app.route("/getDayNightData", methods=['GET'])
 def fetchDayNightData():
-	print(request.args['City'])
-	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+	#print(request.args['City'])
+	result = collection.find({"City": "Los Angeles","Area Name" : "Central"})
 	jsonResult={}
 	jsonResult['day'] = 0
 	jsonResult['night'] = 0
@@ -62,8 +62,7 @@ def fetchCrimeType():
 
 	for item in result:
 		if any(word in item['Crime Type'].lower() for word in list1):
-				print(item['Crime Type'])
-				jsonResult['burglary'] += 1
+			jsonResult['burglary'] += 1
 		elif any(word in item['Crime Type'].lower() for word in list2):
 			jsonResult['assault'] += 1
 		elif any (word in item['Crime Type'].lower() for word in list3):
