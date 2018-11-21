@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Chart from "./ChartPage";
+import axios from 'axios';
 class ChartLanding extends Component {
   constructor(props) {
     super(props);
@@ -8,9 +9,19 @@ class ChartLanding extends Component {
     };
   }
   componentWillMount() {
-    this.getChartData();
+    
+    var resultdata={};
+    //axios.defaults.withCredentials= true;
+    axios.get('http://localhost:5000/getCrimeData')
+      .then((response)=>{
+        resultdata = response.data
+        console.log('resultdata', resultdata);
+        this.getChartData(resultdata);
+      });
+      
+    
   }
-  getChartData() {
+  getChartData(resultdata) {
     // Ajax calls here
     this.setState({
       chartData: {
