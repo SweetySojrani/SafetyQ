@@ -207,3 +207,50 @@ def fetchRaceData():
 
 	return dumps(jsonResult)
 
+@app.route("/getDateData", methods=['GET'])
+
+def fetchDateData():
+
+
+
+	result = collection.find({"City": "Los Angeles","Area Name" : "77th Street"})
+
+	jsonResult={}
+
+	jsonResult['2013'] = 0
+
+	jsonResult['2014'] = 0
+
+	jsonResult['2015'] = 0
+
+	jsonResult['2016'] = 0
+
+	jsonResult['2017'] = 0
+
+	for item in result:
+
+		dateofCrime = (item["Occurred Date"])
+
+		if dateofCrime == '2013':
+
+			jsonResult['2013']=jsonResult['2013']+1
+
+		elif dateofCrime == '2014':
+
+			jsonResult['2014']=jsonResult['2014']+1
+
+		elif dateofCrime == '2015':
+
+			jsonResult['2015']=jsonResult['2015']+1
+
+		elif dateofCrime == '2016':
+
+			jsonResult['2016']=jsonResult['2016']+1
+
+		elif dateofCrime == '2017':
+
+			jsonResult['2017']=jsonResult['2017']+1
+
+	#resultCount = [day, night]
+
+	return dumps(jsonResult)
