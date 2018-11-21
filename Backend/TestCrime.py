@@ -8,10 +8,11 @@ from bson import Binary, Code
 from bson.json_util import dumps
 import json
 from flask_cors import CORS
+import config
 app = Flask(__name__)
 CORS(app)
 
-connection = MongoClient("mongodb://XXX")
+connection = MongoClient(config.uri)
 db = connection['safety_predict']
 collection = db.crime
 

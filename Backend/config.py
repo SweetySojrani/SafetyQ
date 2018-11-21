@@ -1,0 +1,1 @@
+uri = "mongodb://safeUs:safeUs1@ds039707.mlab.com:39707/safety_predict"
