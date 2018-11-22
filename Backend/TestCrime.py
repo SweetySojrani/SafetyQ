@@ -1,3 +1,4 @@
+from __future__ import division
 from flask import Flask, request
 from flask import jsonify
 app = Flask(__name__)
@@ -9,6 +10,7 @@ from bson.json_util import dumps
 import json
 from flask_cors import CORS
 import config
+
 app = Flask(__name__)
 CORS(app)
 
@@ -275,3 +277,93 @@ def fetchDateData():
 	#resultCount = [day, night]
 
 	return dumps(jsonResult)
+
+
+
+@app.route("/getYearOnYearPrediction", methods=['GET'])
+def fetchPrediction():
+	city = request.args['City']
+	area = request.args['Area Name']
+	result = collection.find({"City": city,"Area Name" : area})
+	jsonResult={}
+	jsonResult['2013'] = 0
+	jsonResult['2014'] = 0
+	jsonResult['2015'] = 0
+	jsonResult['2016'] = 0
+	jsonResult['2017'] = 0
+	for item in result:
+		dateofCrime = (item["Occurred Date"])
+		if dateofCrime == '2013':
+			jsonResult['2013']=jsonResult['2013']+1
+		elif dateofCrime == '2014':
+			jsonResult['2014']=jsonResult['2014']+1
+		elif dateofCrime == '2015':
+			jsonResult['2015']=jsonResult['2015']+1
+		elif dateofCrime == '2016':
+			jsonResult['2016']=jsonResult['2016']+1
+		elif dateofCrime == '2017':
+			jsonResult['2017']=jsonResult['2017']+1
+	jsonPercent = {}
+	percentSum=0
+	count=0
+	final=0
+
+	if jsonResult['2013'] > 0 and jsonResult['2014'] > 0:
+		diff = jsonResult['2014'] - jsonResult['2013']
+		jsonPercent['2013to2014'] = diff/jsonResult['2013'] * 100
+		percentSum +=jsonPercent['2013to2014'] 
+		count+=1
+		final = jsonResult['2014']
+
+	if jsonResult['2014'] > 0 and jsonResult['2015'] > 0:
+		diff = jsonResult['2015'] - jsonResult['2014']
+		print(diff)
+		print(float(diff/jsonResult['2014']))
+		jsonPercent['2014to2015'] = diff/jsonResult['2014'] * 100
+		percentSum +=jsonPercent['2014to2015']
+		count+=1
+		final = jsonResult['2015']
+
+	if jsonResult['2015'] > 0 and jsonResult['2016'] > 0:
+		diff = jsonResult['2016'] - jsonResult['2015']
+		jsonPercent['2015to2016'] = diff/jsonResult['2015'] * 100
+		percentSum +=jsonPercent['2015to2016']
+		count+=1
+		final = jsonResult['2016']
+
+	if jsonResult['2016'] > 0 and jsonResult['2017'] > 0:
+		diff = jsonResult['2017'] - jsonResult['2016']
+		print(diff/jsonResult['2016'])
+		jsonPercent['2016to2017'] = diff/jsonResult['2016'] * 100
+		percentSum +=jsonPercent['2016to2017']
+		count+=1
+		final = jsonResult['2017']
+	
+	jsonArr = []
+	for key in jsonResult:
+		jsonArr.append(jsonResult[key])
+	print('jsonArr')
+	print(jsonArr)
+	if count > 0:
+		averageGrowth = percentSum/count
+
+		#Projecting
+		n=2
+		projectedValue=[]
+		
+		
+		#y=a(1+r)^x
+		for i in range(0, n):
+			projectedVal = final * (1+(averageGrowth/100))
+			final = projectedVal
+			projectedValue.append(projectedVal)
+
+		print('Projected Value')
+		print(projectedValue)
+		return dumps(jsonArr + projectedValue)
+		
+	#for value in jsonPercent:
+	#return dumps(jsonPercent)
+
+	return dumps(jsonArr)
+	
