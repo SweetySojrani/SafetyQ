@@ -114,14 +114,20 @@
 
 /* chart page */
 .chartPage {
-  margin-left: 10px;
+  background-color: #D9EADA; 
+}
+.chartPageTop {
+  margin: 0 30px 0 30px;
+  background-color: white;
+}
+.chartBreak {
+  /* margin: 50px 0 0 50px; */
+  height: 20px;
+  background-color: white;
 }
 .bar_chart {
   float: left;
-  width: 400px;
-  height: 200px;
-  margin-left: 50px;
-  box-shadow: 5px 5px #888888;
+  margin-left: 25px;
 }
 .safetyScoreDisplay {
   font-weight: bold;
@@ -130,11 +136,25 @@
 .ScoreDisplay {
   font-weight: bold;
   font-size: 25px;
-  color: blue;
+  color: #4FB756;
 }
 .pieChart {
+  float: left;
   margin-top: 20px;
 }
-.barChart {
+.chart1Row {
+  width: 100%;
+}
+.chart1Show {
+  margin-right: 70px;
+  float: left;
   margin-bottom: 20px;
+  margin-left: 30px;
+}
+.modal-content {
+  width: 800px;
+  height: 500px;
+}
+.chartPageBottom {
+  padding-top:50px;
 }
