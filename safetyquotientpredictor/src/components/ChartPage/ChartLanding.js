@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Chart from "./ChartPage";
 import axios from 'axios';
+import {Pie} from 'react-chartjs-2';
 class ChartLanding extends Component {
   constructor(props) {
     super(props);
@@ -106,12 +107,16 @@ class ChartLanding extends Component {
         <br/>
         <br/>
         <br/>
-        <Chart className=""
+        {/* <Chart className=""
           chartData={this.state.chartData}
           dayNightChartData={this.state.dayNightChartData}
           location="Massachusetts"
           legendPosition="bottom"
-        />
+        /> */}
+        <div>
+        <Pie data={this.state.dayNightChartData}/></div>
+        <div>
+        <Pie data={this.state.dayNightChartData}/></div>
         </div>
         <br/>
         <br/>
