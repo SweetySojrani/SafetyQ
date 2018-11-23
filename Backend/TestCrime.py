@@ -348,7 +348,8 @@ def fetchPrediction():
 		averageGrowth = percentSum/count
 
 		#Projecting
-		n=2
+		n = int(request.args['N'])
+		#n=2
 		projectedValue=[]
 		
 		
