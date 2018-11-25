@@ -26,9 +26,11 @@ class Analytics extends Component{
     }
 
     getDayNightData(){
+        console.log(localStorage.getItem('city'));
+        console.log(localStorage.getItem('street'));
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "Central"
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
         }
         axios.get('http://localhost:5000/getDayNightData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
@@ -55,8 +57,8 @@ class Analytics extends Component{
 
     getCrimeTypeData(){
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "Central"
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
         }
         axios.get('http://localhost:5000/getCrimeType?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
@@ -84,8 +86,8 @@ class Analytics extends Component{
 
     getGenderTypeData(){
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "Central"
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
         }
         axios.get('http://localhost:5000/getGenderData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
@@ -112,8 +114,8 @@ class Analytics extends Component{
 
     getAgeData(){
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "Central"
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
         }
         axios.get('http://localhost:5000/getAgeData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
@@ -141,8 +143,8 @@ class Analytics extends Component{
 
     getRaceTypeData(){
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "Central"
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
         }
         axios.get('http://localhost:5000/getRaceData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
@@ -170,8 +172,8 @@ class Analytics extends Component{
 
     getYearComparionsionData(){
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "77th Street"
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
         }
         axios.get('http://localhost:5000/getDateData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{

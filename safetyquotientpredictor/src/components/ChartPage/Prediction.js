@@ -9,18 +9,20 @@ class Prediction extends Component{
         super(props);
         console.log(props);
         this.state={
-            predictionData:{}
+            predictionData:{},
+            sqpScore: 0
         }
     }
 
     componentWillMount(){
         this.getPredictionData();
+        this.getSQPScore();
     }
 
     getPredictionData(){
         var data = {
-            "City" : "Los Angeles",
-            "Area Name": "Central",
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street'),
             "Number of years": 3
         }
         axios.get('http://localhost:5000/getYearOnYearPrediction?City='+data.City + '&Area Name='+data["Area Name"]+'&N='+data["Number of years"])
@@ -47,12 +49,27 @@ class Prediction extends Component{
             });
     }
 
+    getSQPScore(){
+        var data = {
+            "City" : localStorage.getItem('city'),
+            "Area Name": localStorage.getItem('street')
+        }
+        axios.get('http://localhost:5000/getSQPScore?City='+data.City + '&Area Name='+data["Area Name"])
+            .then((response)=>{
+                console.log('SQP score data: ', response.data);
+                this.setState({
+                    sqpScore: response.data.SQPFinal
+                })
+                
+            });
+    }
+
     render(){
         return(
             <div className="row">
                 
                 <div className="col-6 row center-content mt-5">
-                    <CircularProgressbar percentage={90} text={90} />
+                    <CircularProgressbar percentage={this.state.sqpScore} text={Math.round(this.state.sqpScore)} />
                 </div>
                 <div className="col-6 mt-5">
                     <Line data={this.state.predictionData}></Line>

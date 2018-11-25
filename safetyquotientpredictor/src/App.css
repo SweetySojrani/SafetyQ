@@ -53,6 +53,10 @@
 
 .search-box{
   border-radius : 2px;
+  margin-right: 20px;
+}
+.search-box-1 {
+  margin-left: 100px;
 }
 .header{
   height: 65px;

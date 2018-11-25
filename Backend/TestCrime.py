@@ -367,4 +367,42 @@ def fetchPrediction():
 	#return dumps(jsonPercent)
 
 	return dumps(jsonArr)
+
+
+
+
+@app.route("/getSQPScore", methods=['GET'])
+def fetchSQP():
+	city = request.args['City']
+	area = request.args['Area Name']
+	print(city)
+	print(area)
+	
+	# result = collection.find({"City": city,"Area Name" : area})
+	# jsonResult={}
+	jsonResult={}
+	jsonResult['totalAreaCrime'] = 0
+	jsonResult['totalCityCrime'] = 0
+	jsonFinal = {}
+	jsonFinal['SQP'] = 0
+	
+	result = collection.find({"City": city})
+
+	for item in result:
+		jsonResult['totalCityCrime'] += 1
+		areaDetail = (item["Area Name"])
+		if areaDetail == area:
+			jsonResult['totalAreaCrime'] += 1
+
+	jsonFinal['SQP'] = 1-jsonResult['totalAreaCrime']/jsonResult['totalCityCrime']
+	jsonFinal['SQPFinal'] = jsonFinal['SQP']*100		
+	print('json resuk')
+	print(jsonFinal)
+	print(jsonResult)
+    
+		# print('Projected Value')
+		# print(projectedValue)
+		# return dumps(jsonArr + projectedValue)
+
+	return dumps(jsonFinal)
 	
