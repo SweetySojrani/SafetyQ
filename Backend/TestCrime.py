@@ -387,9 +387,11 @@ def fetchSQP():
 	jsonFinal['SQP'] = 0
 	
 	result = collection.find({"City": city})
+	jsonResult['totalCityCrime'] = result.count()
+	result = collection.find({"City": city, "Area Name": area})
 
 	for item in result:
-		jsonResult['totalCityCrime'] += 1
+		#jsonResult['totalCityCrime'] += 1
 		areaDetail = (item["Area Name"])
 		if areaDetail == area:
 			jsonResult['totalAreaCrime'] += 1
