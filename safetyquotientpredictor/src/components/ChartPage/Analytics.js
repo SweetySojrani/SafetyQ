@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from 'axios';
 import {Pie, Bar, Doughnut, Line, HorizontalBar} from 'react-chartjs-2';
 import {Link} from 'react-router-dom';
+import {rooturl} from '../../config';
+
+
 class Analytics extends Component{
     constructor(props){
         super(props);
@@ -32,7 +35,7 @@ class Analytics extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getDayNightData?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getDayNightData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('Day Night Response data: ', response.data);
                 var resultArr = []
@@ -60,7 +63,7 @@ class Analytics extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getCrimeType?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getCrimeType?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('Crime Type Response data: ', response.data);
                 var resultArr = []
@@ -89,7 +92,7 @@ class Analytics extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getGenderData?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getGenderData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('Gender Type Response data: ', response.data);
                 var resultArr = []
@@ -117,7 +120,7 @@ class Analytics extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getAgeData?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getAgeData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('Age Response data: ', response.data);
                 var resultArr = []
@@ -146,7 +149,7 @@ class Analytics extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getRaceData?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getRaceData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('Race Type Response data: ', response.data);
                 var resultArr = []
@@ -175,12 +178,12 @@ class Analytics extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getDateData?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getDateData?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('Year Response data: ', response.data);
                 var resultArr = []
                 for(var key in response.data){
-                resultArr.push(response.data[key]);
+                    resultArr.push(response.data[key]);
                 }
                 console.log('Year  Result array', resultArr);
                 var chartData = {

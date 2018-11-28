@@ -16,7 +16,7 @@ CORS(app)
 
 connection = MongoClient(config.uri)
 db = connection['safety_predict']
-collection = db.crime
+collection = db.crime_dataset
 
 @app.after_request 
 def after_request(response): 
@@ -354,15 +354,17 @@ def fetchPrediction():
 		
 		
 		#y=a(1+r)^x
+		keys =['2018', '2019', '2020']
 		for i in range(0, n):
 			projectedVal = final * (1+(averageGrowth/100))
 			final = projectedVal
+			jsonResult[keys[i]] = projectedVal
 			projectedValue.append(projectedVal)
 
 		print('Projected Value')
 		print(projectedValue)
-		return dumps(jsonArr + projectedValue)
-		
+		#return dumps(jsonArr + projectedValue)
+		return dumps(jsonResult)
 	#for value in jsonPercent:
 	#return dumps(jsonPercent)
 
@@ -389,7 +391,7 @@ def fetchSQP():
 	result = collection.find({"City": city})
 	jsonResult['totalCityCrime'] = result.count()
 	result = collection.find({"City": city, "Area Name": area})
-
+	#percapita crime
 	for item in result:
 		#jsonResult['totalCityCrime'] += 1
 		areaDetail = (item["Area Name"])

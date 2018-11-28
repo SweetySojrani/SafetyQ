@@ -53,9 +53,9 @@ class Home extends Component{
                 <div className="content-container">
                     <div className="home-page-text">Safety isn't expensive, Its priceless!</div>
                     <div className="form-group row">
-                        <input type="textbox" onChange= {this.streetChangeHandler} value={this.state.street} className="form-control form-control-lg search-box search-box-1 col-lg-4 col-md-4 col-sm-4" placeholder="Area"/>   
-                        <input type="textbox" onChange= {this.cityChangeHandler} value={this.state.city} className="form-control form-control-lg search-box col-lg-4 col-md-4 col-sm-4" placeholder="City"/>                        
-                     
+                       
+                        <input type="textbox" onChange= {this.cityChangeHandler} value={this.state.city} className="form-control form-control-lg search-box search-box-1 col-lg-4 col-md-4 col-sm-4" placeholder="City"/>                        
+                        <input type="textbox" onChange= {this.streetChangeHandler} value={this.state.street} className="form-control form-control-lg search-box col-lg-4 col-md-4 col-sm-4" placeholder="Area"/>   
                         <button onClick={this.submitSearch} className="btn btn-sm col-lg-1 col-md-1 col-sm-1 ml-1 go-btn">Go</button>
                     </div>
                 </div>

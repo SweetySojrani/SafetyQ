@@ -3,6 +3,8 @@ import axios from 'axios';
 import {Line} from 'react-chartjs-2';
 import CircularProgressbar from 'react-circular-progressbar';
 
+import {rooturl} from '../../config';
+
 class Prediction extends Component{
 
     constructor(props){
@@ -25,7 +27,7 @@ class Prediction extends Component{
             "Area Name": localStorage.getItem('street'),
             "Number of years": 3
         }
-        axios.get('http://localhost:5000/getYearOnYearPrediction?City='+data.City + '&Area Name='+data["Area Name"]+'&N='+data["Number of years"])
+        axios.get(rooturl+'/getYearOnYearPrediction?City='+data.City + '&Area Name='+data["Area Name"]+'&N='+data["Number of years"])
             .then((response)=>{
                 console.log('prediction Response data: ', response.data);
                 var resultArr = []
@@ -54,7 +56,7 @@ class Prediction extends Component{
             "City" : localStorage.getItem('city'),
             "Area Name": localStorage.getItem('street')
         }
-        axios.get('http://localhost:5000/getSQPScore?City='+data.City + '&Area Name='+data["Area Name"])
+        axios.get(rooturl+'/getSQPScore?City='+data.City + '&Area Name='+data["Area Name"])
             .then((response)=>{
                 console.log('SQP score data: ', response.data);
                 this.setState({
