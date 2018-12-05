@@ -409,4 +409,8 @@ def fetchSQP():
 		# return dumps(jsonArr + projectedValue)
 
 	return dumps(jsonFinal)
+
+
 	
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=80)
