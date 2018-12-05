@@ -19,6 +19,7 @@ class Prediction extends Component{
     componentWillMount(){
         this.getPredictionData();
         this.getSQPScore();
+        this.recommend();
     }
 
     getPredictionData(){
@@ -66,6 +67,20 @@ class Prediction extends Component{
             });
     }
 
+    recommend() {
+        var data = {
+            "City" : localStorage.getItem('city'),
+        }
+        axios.get(rooturl+'/getRecommendedArea?City='+data.City)
+            .then((response)=>{
+                // console.log('SQP score data: ', response.data);
+                // this.setState({
+                //     sqpScore: response.data.SQPFinal
+                // })
+                
+            });
+    }
+
     render(){
         return(
             <div className="row">
@@ -75,6 +90,25 @@ class Prediction extends Component{
                 </div>
                 <div className="col-6 mt-5">
                     <Line data={this.state.predictionData}></Line>
+                </div>
+                <hr />
+                <div className="col-2"></div>
+                <div className="col-9 border mt-5">
+                    <div className="center-content">
+                        <h3>Recommendations</h3>
+                    </div>
+                    
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">City</th>
+                                <th scope="col">Locality</th>
+                                <th scope="col">SQP Score</th>
+                                <th scope="col">&uarr; % </th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
                 
             </div>
