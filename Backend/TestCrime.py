@@ -411,6 +411,81 @@ def fetchSQP():
 	return dumps(jsonFinal)
 
 
+@app.route("/getRecommendedArea", methods=['GET'])
+def recommendedArea():
+	city = request.args['City']
+	print("recommendation for the city")
+	print(city)
+
+	jsonResult={}
+	jsonResult['totalAreaCrime'] = 0
+	jsonFinal = {}
+	jsonFinal['SQP'] = 0
+	areas={}
+	sqp={}
+	Boolean = False
+
+	result = collection.find({"City": city})
+	jsonResult['totalCityCrime'] = result.count()
+	
+	result = collection.find({"City": city})
+	for item in result:
+		#jsonResult['totalCityCrime'] += 1
+		if len(areas)>=1:
+			for areaName,j in areas.items():
+				if(item["Area Name"]==areaName):
+					Boolean = True
+					break
+			if Boolean==True:
+				areas[item['Area Name']]+=1
+			elif Boolean==False:
+				areas[item['Area Name']]=1
+			Boolean=False	
+		elif len(areas)==0:	
+			areas[item['Area Name']]=1
+	print("total areas and crimes in that city")
+	print(areas)
+
+
+	for areaName,j in areas.items():
+		print(areaName)
+		print(j)
+		jsonFinal['SQP'] = 1-j/jsonResult['totalCityCrime']
+		jsonFinal['SQP'] = jsonFinal['SQP']*100	
+		sqp[areaName] = jsonFinal['SQP']	
+	
+	print(sqp)
+	print("sqp highest order")
+
+	sqpVal = []
+	count=0
+	for key in sqp:
+		value = sqp[key]
+		print("The key and value are ({}) = ({})".format(key, value))
+		sqpVal.append(value)
+
+	sqpVal.sort(reverse=True)
+	sqpVal = sqpVal[:6]
+
+	sqpJsonResult = {}
+	for x in range(0, len(sqpVal)):
+		for key in sqp:
+			value = sqp[key]
+			if value == sqpVal[x]:
+				sqpJsonResult[key] = value
+		print(sqpVal[x])
+		print('\n')
+	
+	for key in sqpJsonResult:
+		value = sqp[key]
+		print("The key and value are ({}) = ({})".format(key, value))
+
+	
+	# inv_map = sorted(sqp.items(), key = lambda kv:(kv[1], kv[0]))  
+	# inv_map = {v: k for k, v in inv_map.items()}
+	#print(sorted(sqp.items(), key = lambda kv:(kv[1], kv[0], reverse=True))
+	return dumps(sqpJsonResult)
+
 	
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
