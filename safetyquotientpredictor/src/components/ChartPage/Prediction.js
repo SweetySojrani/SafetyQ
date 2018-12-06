@@ -12,7 +12,8 @@ class Prediction extends Component{
         console.log(props);
         this.state={
             predictionData:{},
-            sqpScore: 0
+            sqpScore: 0,
+            recommnededAreas : []
         }
     }
 
@@ -73,32 +74,43 @@ class Prediction extends Component{
         }
         axios.get(rooturl+'/getRecommendedArea?City='+data.City)
             .then((response)=>{
-                // console.log('SQP score data: ', response.data);
-                // this.setState({
-                //     sqpScore: response.data.SQPFinal
-                // })
+                 console.log('Recommended areas to live: ', response.data); 
+                 this.setState({
+                    recommnededAreas : response.data
+                 })
                 
             });
     }
 
     render(){
+
+        var recommendationContent = this.state.recommnededAreas.map((item, index)=>{
+            return(
+                <tr key={index}>
+                    <th scope="row">{index+1}</th>
+                    <td>{localStorage.getItem('city')}</td>
+                    <td>{item.area}</td>
+                    <td>{Number(item.sqp).toFixed(2)}</td>
+                    <td className="green">{Number((item.sqp - this.state.sqpScore)/(this.state.sqpScore) * 100).toFixed(2)}</td> 
+                </tr>
+            )
+            });
         return(
             <div className="row">
-                
                 <div className="col-6 row center-content mt-5">
                     <CircularProgressbar percentage={this.state.sqpScore} text={Math.round(this.state.sqpScore)} />
                 </div>
                 <div className="col-6 mt-5">
                     <Line data={this.state.predictionData}></Line>
                 </div>
-                <hr />
+                
                 <div className="col-2"></div>
-                <div className="col-9 border mt-5">
-                    <div className="center-content">
-                        <h3>Recommendations</h3>
+                <div className="col-9 mt-5">
+                    <div className="center-content mt-5">
+                        <h3>Recommended Areas based on your search</h3>
                     </div>
                     
-                    <table className="table">
+                    <table className="table table-dark table-striped mt-5 mb-5">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -108,6 +120,9 @@ class Prediction extends Component{
                                 <th scope="col">&uarr; % </th>
                             </tr>
                         </thead>
+                        <tbody>
+                            {recommendationContent}
+                        </tbody>
                     </table>
                 </div>
                 

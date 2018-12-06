@@ -465,25 +465,22 @@ def recommendedArea():
 		sqpVal.append(value)
 
 	sqpVal.sort(reverse=True)
-	sqpVal = sqpVal[:6]
+	sqpVal = sqpVal[:5]
 
-	sqpJsonResult = {}
+	sqpJsonResult = []
+	res = {}
 	for x in range(0, len(sqpVal)):
 		for key in sqp:
 			value = sqp[key]
 			if value == sqpVal[x]:
-				sqpJsonResult[key] = value
+				#sqpJsonResult[key] = value
+				#res[key] = value
+				res['area'] = key
+				res['sqp'] = value
+				sqpJsonResult.append(res)
+				res={}
 		print(sqpVal[x])
 		print('\n')
-	
-	for key in sqpJsonResult:
-		value = sqp[key]
-		print("The key and value are ({}) = ({})".format(key, value))
-
-	
-	# inv_map = sorted(sqp.items(), key = lambda kv:(kv[1], kv[0]))  
-	# inv_map = {v: k for k, v in inv_map.items()}
-	#print(sorted(sqp.items(), key = lambda kv:(kv[1], kv[0], reverse=True))
 	return dumps(sqpJsonResult)
 
 	
