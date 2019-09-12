@@ -13,4 +13,4 @@ People keep relocating to new places due to change of jobs, schools, or other re
 
 Resources: Public data sets.
 
-
+Refer the 272 Project Report_Team 8.pdf in this repo for details on implementation. 
